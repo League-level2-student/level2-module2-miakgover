@@ -1,5 +1,6 @@
 package _06_overloading;
 
+import java.awt.Color;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -19,12 +20,12 @@ public class LeagueOptionPane {
 	static JFrame frame = new JFrame();
 	static ImageIcon logo;
 	static String path = "src/_06_overloading/";
+	static JPanel panel = new JPanel();
 	public static void showMessageDialog(String message) {
 		// 1. Open example.png and make a GUI that looks like that
 		//    The message parameter is what we want to show on our pop-up
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel panel = new JPanel();
 		JLabel label = new JLabel(message);
 		if(logo == null) {
 			logo = new ImageIcon(path+"league.png");
@@ -62,7 +63,11 @@ public class LeagueOptionPane {
 		//	1. Create another showMessageDialog() method that lets us choose the Message, Title, Image, and Background Color
 		//     3 String parameters (one for the message, one for the title, and one for the fileName)
 		//	   1 Color parameter for the backgroundColor
-		//			
+		public static JPanel showMessageDialog(String message, String title, String fileName, Color backgroundColor) {
+			panel.setBackground(backgroundColor);
+			showMessageDialog(message, title, fileName);
+			return panel;
+		}
 		//	2. Change the return type of the 3rd showMessageDialog() method(the one right above) to JPanel
 		//	   Make sure to return your panel at the end of that method
 		//	
